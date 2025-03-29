@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Assembly Features</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Assembly Language: The Gateway to the Machine</h1>
+        <p>Assembly language is a low-level programming language that provides direct control over computer hardware. It is specific to a computer’s architecture and is used for performance-critical applications.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+            <li><b>Direct Hardware Interaction:</b> Gives precise control over memory and processor instructions.</li>
+            <li><b>Fast Execution:</b> Programs run efficiently with minimal overhead.</li>
+            <li><b>Compact Code:</b>Requires less memory compared to high-level languages.</li>
+            <li><b>Essential for Embedded Systems:</b>Used in microcontrollers, BIOS development, and real-time systems.</li>
+            <li><b>Foundation for Operating Systems:</b>Many OS kernels include assembly code for optimization.</li>
+        </ul>
+
+        <h2>Example Assembly Code</h2>
+        <pre>
+     section .text
+     global _start
+            
+    _start:
+        mov edx, len
+        mov ecx, msg
+        mov ebx, 1
+        mov eax, 4
+        int 0x80
+        mov eax, 1
+        xor ebx, ebx
+        int 0x80
+            
+    section .data
+    msg db 'Hello, World!',0xa
+    len equ $ - msg
+        </pre>
+    </div>
+
+    <footer>
+        <p>Retro Pixel Blog - COBOL, Fortran & Assembly</p>
+    </footer>
+
 </body>
 </html>

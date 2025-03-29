@@ -1,73 +1,130 @@
 a {
     text-decoration: none;
 }
-
+pre {
+    text-align: left;
+}
+li {
+    text-align: start;
+}
+/* CRT Effect */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
     background: black;
-    color: white;
-    font-family:'Press Start 2P', sans-serif;
+    color: #00ff00;
+    justify-content: center;
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 .container {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0px,
+        rgba(0, 0, 0, 0.4) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+.container {
+    animation: flicker 0.1s infinite alternate;
+}
+
+
+body::after {
+    content: "";
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* center buttons */
 .buttons {
     display: flex;
-    gap: 15px;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
 
-button {
-    background: black;
-    color: white;
-    border: 2px solid;
-    padding: 10px 20px;
+/* CRT */
+.buttons a {
+    display: inline-block;
+    text-decoration: none;
     font-size: 16px;
-    font-family: inherit;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.3s ease-in-out;
-  }
-
-.green {
-    border-color: #00ff00;
+    padding: 12px 25px;
+    border: 2px solid #00ff00;
     color: #00ff00;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Press Start 2P", sans-serif;
+    position: relative;
     box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    transition: 0.3s ease-in-out;
+    animation: flicker 0.1s infinite alternate;
 }
 
-.green:hover {
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+
+.buttons a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0.1) 0px,
+        rgba(0, 255, 0, 0.05) 2px,
+        rgba(0, 255, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.buttons a:hover {
+    transform: scale(1.05) skewX(1deg);
     background: #00ff00;
     color: black;
-    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
-}
-.blue {
-    border-color: #1685f8;
-    color: #1685f8;
-    box-shadow: 0 0 5px #1685f8, 0 0 10px #1685f8;
-}
-
-.blue:hover {
-    background: #1685f8;
-    color: black;
-    box-shadow: 0 0 10px #1685f8, 0 0 20px #1685f8, 0 0 40px #1685f8;
-}
-.purple {
-    border-color: #e900ff;
-    color: #e900ff;
-    box-shadow: 0 0 5px #e900ff, 0 0 10px #e900ff;
-}
-
-.purple:hover {
-    background: #e900ff;
-    color: black;
-    box-shadow: 0 0 10px #e900ff, 0 0 20px #e900ff, 0 0 40px #e900ff;
+    box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
 }
