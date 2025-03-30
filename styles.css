@@ -7,7 +7,7 @@ pre {
 li {
     text-align: start;
 }
-/* CRT Effect */
+
 body {
     background: black;
     color: #00ff00;
@@ -18,7 +18,7 @@ body {
     overflow: hidden;
     position: relative;
 }
-
+/* glowy text */
 .container {
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
     display: flex;
@@ -29,8 +29,9 @@ body {
     margin: auto;
     padding: 20px;
     text-align: left;
+    animation: flicker 0.1s infinite alternate;
 }
-
+/* crt scanlines */
 body::before {
     content: "";
     position: fixed;
@@ -49,29 +50,11 @@ body::before {
     z-index: 9999;
     opacity: 0.3;
 }
-
+/* flicker-parpadeo */
 @keyframes flicker {
     0% { opacity: 1; }
-    50% { opacity: 0.9; }
+    50% { opacity: 0.85; }
     100% { opacity: 1; }
-}
-
-.container {
-    animation: flicker 0.1s infinite alternate;
-}
-
-
-body::after {
-    content: "";
-    position: fixed;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
-    pointer-events: none;
-    z-index: 10000;
 }
 
 /* center buttons */
@@ -82,7 +65,7 @@ body::after {
     margin-top: 30px;
 }
 
-/* CRT */
+/* crt buttons */
 .buttons a {
     display: inline-block;
     text-decoration: none;
@@ -99,12 +82,7 @@ body::after {
     animation: flicker 0.1s infinite alternate;
 }
 
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.85; }
-    100% { opacity: 1; }
-}
-
+/* puts scanlines inside buttons when not hovering */
 .buttons a::after {
     content: "";
     position: absolute;
